@@ -1,11 +1,6 @@
-angular
-  .module('clientApp')
-  .factory('LocationService', LocationService);
-
-LocationService.$inject = ['ResourceService', '$q'];
-
-function LocationService(ResourceService, $q){
+angular.module('clientApp').factory('LocationService', ['ResourceService', '$q', function(ResourceService, $q){
   var Location = ResourceService('locations');
+  //console.log(Location);
   return {
     get: function(){
       var deferred = $q.defer();
@@ -15,4 +10,4 @@ function LocationService(ResourceService, $q){
       return deferred.promise;
     }
   };
-};
+}]);

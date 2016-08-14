@@ -5,47 +5,21 @@ angular.module('clientApp')
 
   var markers = {};
   var jsonMarkers;
-/*
-  var url = API.Url + '/locations';
-  var config = {
-    headers: {
-      'X-ApiKey': API.ApiKey,
-      'Accept': 'application/json'
-    }
-  };
-  var promise = $http.get(url, config);
-  promise.success(function(data, status, headers, config){
-    jsonMarkers = data;
-    for(var i = 0; i < jsonMarkers.locations.length; i++){
-      var marker = {
-        lat: parseFloat(jsonMarkers.locations[i]['latitude']),
-        lng: parseFloat(jsonMarkers.locations[i]['longitude']),
-        draggable: false
-      }
-      markers[i] = marker;
-    }
-  });
-  promise.error(function(data, status, headers, config){
-    console.log('FEL');
-  });*/
-
-  //console.log(Location)
 
   var locationPromise = Location.get();
   locationPromise
     .then(function(data){
-      console.log('data::' + data);
-
-      /*jsonMarkers = data;
-      console.log(data + 'data');
-      for(var i = 0; i < jsonMarkers.locations.length; i++){
+      var index = 0;
+      for(var key in data['locations']){
+        index += 1;
+        var value = data['locations'][key];
         var marker = {
-          lat: parseFloat(jsonMarkers.locations[i]['latitude']),
-          lng: parseFloat(jsonMarkers.locations[i]['longitude']),
+          lat: parseFloat(value['latitude']),
+          lng: parseFloat(value['longitude']),
           draggable: false
         }
-        markers[i] = marker;
-      }*/
+        markers[index] = marker;
+      }
     })
     .catch(function(error){
       console.log('Ett fel inträffade.');

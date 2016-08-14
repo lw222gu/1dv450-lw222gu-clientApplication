@@ -2,9 +2,10 @@
 
 angular.module('clientApp',[
   'ngRoute',
-  'leaflet-directive'
+  'leaflet-directive',
+  'restangular'
 ])
-.config(function($routeProvider, $locationProvider) {
+.config(function($routeProvider, $locationProvider, RestangularProvider) {
   $routeProvider
   .when('/', {
     templateUrl: 'view/main.html',
@@ -28,7 +29,8 @@ angular.module('clientApp',[
   })
   .otherwise({
     redirectTo: '/'
-  })
+  });
+  RestangularProvider.setBaseUrl('http://localhost:4000/api/v1/')
 })
 .constant('API', {
   ApiKey: '1234567890',
