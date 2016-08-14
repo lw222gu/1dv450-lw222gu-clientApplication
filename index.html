@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html data-ng-app="clientApp" ng-controller="PageCtrl">
+  <head>
+    <title>Lönekartan</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <div ng-include src="'view/shared/menu.html'"></div>
+      <div ng-view></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular-route.js"></script>
+
+    <script src="app.js"></script>
+
+    <script src="factory/authenticationFactory.js"></script>
+
+    <script src="controller/page.js"></script>
+    <script src="controller/main.js"></script>
+    <script src="controller/login.js"></script>
+    <script src="controller/logout.js"></script>
+    <script src="controller/profile.js"></script>
+  </body>
+</html>
