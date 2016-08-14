@@ -1,10 +1,33 @@
 'use strict';
 
 angular.module('clientApp')
-.controller('SimpleMapCtrl', ['$scope', 'API', '$http', 'LocationService', function($scope, API, $http, Location){
+.controller('SimpleMapCtrl', ['$scope', '$http', 'LocationService', 'SalaryService', function($scope, $http, Location, Salary){
+
+  var salaryPromise = Salary.get();
+  salaryPromise
+    .then(function(data){
+      console.log(data['salaries']);
+      for(var key in data['salaries']){
+        var value = data['salaries'][key];
+        var title = value["title"];
+        var wage = value["wage"];
+        var locationUrl = value["location"].location_url;
+
+        // FORTSÄTT HÄR!! HÄMTA UT RESPEKTIVE LOCATION OCH SKAPA MESSAGES, LAT OCH LNG TILL MARKERS.
+
+        console.log(title);
+        console.log(wage);
+        console.log(locationUrl);
+      }
+    })
+    .catch(function(error){
+      console.log(error);
+    });
+
+
+
 
   var markers = {};
-  var jsonMarkers;
 
   var locationPromise = Location.get();
   locationPromise
@@ -24,6 +47,8 @@ angular.module('clientApp')
     .catch(function(error){
       console.log('Ett fel inträffade.');
     });
+
+
 
   angular.extend($scope, {
     center: {

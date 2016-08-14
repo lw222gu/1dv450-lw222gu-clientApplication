@@ -15,7 +15,6 @@ angular.module('clientApp').factory('ResourceService', function($http, API){
           'Accept': 'application/json'
         }
       };
-      console.log('hejsan');
       return $http(req).then(function(response){
         console.log(response);
         var result = [];
@@ -25,6 +24,7 @@ angular.module('clientApp').factory('ResourceService', function($http, API){
         return result;
       });
     };
+    
     return Resource;
   }
 })
