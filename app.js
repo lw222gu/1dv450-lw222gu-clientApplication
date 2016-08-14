@@ -1,7 +1,8 @@
 'use strict'
 
 angular.module('clientApp',[
-  'ngRoute'
+  'ngRoute',
+  'leaflet-directive'
 ])
 .config(function($routeProvider, $locationProvider) {
   $routeProvider

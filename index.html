@@ -4,6 +4,7 @@
   <head>
     <title>Lönekartan</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css">
   </head>
   <body>
     <div class="container">
@@ -19,11 +20,17 @@
     <script src="app.js"></script>
 
     <script src="factory/authenticationFactory.js"></script>
+    <script src="factory/locationsFactory.js"></script>
+    <script src="factory/resourceFactory.js"></script>
 
     <script src="controller/page.js"></script>
     <script src="controller/main.js"></script>
     <script src="controller/login.js"></script>
     <script src="controller/logout.js"></script>
     <script src="controller/profile.js"></script>
+    <script src="controller/simpleMap.js"></script>
+
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
+    <script src="directive/angular-leaflet-directive.min.js"></script>
   </body>
 </html>
