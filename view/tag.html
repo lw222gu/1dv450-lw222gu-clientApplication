@@ -2,7 +2,7 @@
   <h2>{{ tag.tag }}</h2>
   <ul>
     <li ng-repeat="salary in salaries">
-      {{ salary.title }}, {{ salary.wage }}, {{ salary.address }}
+      <a href="/#/salary/{{ salary.id }}">{{ salary.title }}</a>, {{ salary.wage }}, {{ salary.address }}
     </li>
   </ul>
 </div>

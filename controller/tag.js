@@ -19,7 +19,8 @@ angular.module('clientApp')
           var salary = {
             title : salaryData['salary'].title,
             wage : salaryData['salary'].wage,
-            address: null
+            address: null,
+            id: salaryData['salary'].id
           };
 
           // get salary location
