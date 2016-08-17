@@ -3,53 +3,34 @@
 angular.module('clientApp')
 .controller('SimpleMapCtrl', ['$scope', '$http', 'LocationService', 'SalaryService', function($scope, $http, Location, Salary){
 
+  var markers = {};
+  var index = 0;
+
+  // Get all salaries
   var salaryPromise = Salary.get();
   salaryPromise
     .then(function(data){
-      console.log(data['salaries']);
-      for(var key in data['salaries']){
-        var value = data['salaries'][key];
-        var title = value["title"];
-        var wage = value["wage"];
-        var locationUrl = value["location"].location_url;
 
-        // FORTSÄTT HÄR!! HÄMTA UT RESPEKTIVE LOCATION OCH SKAPA MESSAGES, LAT OCH LNG TILL MARKERS.
-
-        console.log(title);
-        console.log(wage);
-        console.log(locationUrl);
-      }
+      // For each salary, get location and save marker.
+      angular.forEach(data['salaries'], function(value, key){
+        var locPromise = Location.getLocation(value.location.id);
+        locPromise
+        .then(function(locationData){
+          var marker = {
+            lat : parseFloat(locationData['location'].latitude),
+            lng : parseFloat(locationData['location'].longitude),
+            message: '<a href="#/salary/' + value.id + '">' + data['salaries'][key].title + '</a>, ' + data['salaries'][key].wage
+          };
+          index += 1;
+          markers[index] = marker;
+        });
+      });
     })
     .catch(function(error){
       console.log(error);
     });
 
-
-
-
-  var markers = {};
-
-  var locationPromise = Location.get();
-  locationPromise
-    .then(function(data){
-      var index = 0;
-      for(var key in data['locations']){
-        index += 1;
-        var value = data['locations'][key];
-        var marker = {
-          lat: parseFloat(value['latitude']),
-          lng: parseFloat(value['longitude']),
-          draggable: false
-        }
-        markers[index] = marker;
-      }
-    })
-    .catch(function(error){
-      console.log('Ett fel inträffade.');
-    });
-
-
-
+  // Set scope to map settings.
   angular.extend($scope, {
     center: {
       lat: 59.3,

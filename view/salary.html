@@ -1,0 +1,8 @@
+<div class="col-12" ng-controller="TagCtrl">
+  <h2>{{ salary.title }}</h2>
+  <p>Lön: {{ salary.wage }}</p>
+  <h3>Taggar</h3>
+  <ul>
+    <li ng-repeat="tag in salary.tags"><a href="/#/tags/{{ tag.id }}">{{ tag.tag }}</a></li>
+  </ul>
+</div>

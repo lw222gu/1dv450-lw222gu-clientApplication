@@ -36,6 +36,11 @@ angular.module('clientApp',[
     controller: 'SearchCtrl',
     controllerAs: 'search'
   })
+  .when('/salary/:id', {
+    templateUrl: 'view/salary.html',
+    controller: 'SalaryCtrl',
+    controllerAs: 'salary'
+  })
   .otherwise({
     redirectTo: '/'
   })
