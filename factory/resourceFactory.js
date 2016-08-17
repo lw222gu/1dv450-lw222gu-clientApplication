@@ -24,7 +24,29 @@ angular.module('clientApp').factory('ResourceService', function($http, API){
         return result;
       });
     };
-    
+
+
+    // Gets one resource
+    Resource.getOne = function(id){
+      var req = {
+        method: 'GET',
+        url: API.Url + collectionName + '/' + id,
+        headers: {
+          'X-ApiKey': API.ApiKey,
+          'Accept': 'application/json'
+        }
+      };
+      return $http(req).then(function(response){
+        var result = [];
+        angular.forEach(response.data, function(value, key){
+          result[key] = new Resource(value);
+        });
+        return result;
+      });
+    };
+
+
+
     return Resource;
   }
 })

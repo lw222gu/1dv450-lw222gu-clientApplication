@@ -7,6 +7,14 @@ angular.module('clientApp').factory('LocationService', ['ResourceService', '$q',
         deferred.resolve(data);
       });
       return deferred.promise;
+    },
+
+    getLocation: function(id){
+      var deferred = $q.defer();
+      Location.getOne(id).then(function(data){
+        deferred.resolve(data);
+      });
+      return deferred.promise;
     }
   };
 }]);

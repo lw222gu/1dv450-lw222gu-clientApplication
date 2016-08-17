@@ -8,9 +8,6 @@ angular.module('clientApp')
   var tagPromise = TagService.get();
   tagPromise
     .then(function(data){
-      console.log('hej');
-      console.log(data['tags']);
-      console.log(data['tags'][0]['tag'])
       $scope.tagslist = data['tags'];
     })
     .catch(function(error){

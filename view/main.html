@@ -1,9 +1,8 @@
 <div class="col-lg-2 col-md-4 col-sm-12" ng-controller="TagsCtrl">
   <h2>Taggar</h2>
   <ul>
-    <li>Alla</li>
     <li ng-repeat="tag in tagslist">
-      <a href="/tags/{{ tag.id }}">{{ tag.tag }}</a>
+      <a href="/#/tags/{{ tag.id }}">{{ tag.tag }}</a>
     </li>
   </ul>
 </div>

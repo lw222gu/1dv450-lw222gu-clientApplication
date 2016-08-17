@@ -7,6 +7,14 @@ angular.module('clientApp').factory('SalaryService', ['ResourceService', '$q', f
         deferred.resolve(data);
       });
       return deferred.promise;
+    },
+
+    getSalary: function(id){
+      var deferred = $q.defer();
+      Salary.getOne(id).then(function(data){
+        deferred.resolve(data);
+      });
+      return deferred.promise;
     }
   };
 }]);

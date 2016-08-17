@@ -26,6 +26,11 @@ angular.module('clientApp',[
     controller: 'LogoutCtrl',
     controllerAs: 'logout'
   })
+  .when('/tags/:id', {
+    templateUrl: 'view/tag.html',
+    controller: 'TagCtrl',
+    controllerAs: 'tag'
+  })
   .otherwise({
     redirectTo: '/'
   })
@@ -33,5 +38,5 @@ angular.module('clientApp',[
 .constant('API', {
   ApiKey: '1234567890',
   Url: 'http://localhost:4000/api/v1/',
-  BaseUrl: 'http://localhost:4000' 
+  BaseUrl: 'http://localhost:4000'
 });

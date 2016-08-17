@@ -7,6 +7,14 @@ angular.module('clientApp').factory('TagService', ['ResourceService', '$q', func
         deferred.resolve(data);
       });
       return deferred.promise;
+    },
+
+    getTag: function(id){
+      var deferred = $q.defer();
+      Tag.getOne(id).then(function(data){
+        deferred.resolve(data);
+      });
+      return deferred.promise;
     }
   };
 }]);
