@@ -31,6 +31,11 @@ angular.module('clientApp',[
     controller: 'TagCtrl',
     controllerAs: 'tag'
   })
+  .when('/search', {
+    templateUrl: 'view/search.html',
+    controller: 'SearchCtrl',
+    controllerAs: 'search'
+  })
   .otherwise({
     redirectTo: '/'
   })

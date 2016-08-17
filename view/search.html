@@ -1,0 +1,18 @@
+<div class="col-12" ng-controller="SearchCtrl">
+  <h2>Sök</h2>
+  <form>
+    <div class="form-group">
+      <label for="search">Sök på titel eller tagg</label>
+      <input id="search" name="search" ng-model="search.search" type="text" class="form-control" />
+    </div>
+    <div class="form-group">
+      <button ng-click="search.submit()" id="search-btn" class="btn">Sök</button>
+    </div>
+  </form>
+  <ul>
+    <li ng-repeat="salary in result">
+      {{ salary.title }}, {{ salary.wage }}
+      <ul><li ng-repeat="tag in salary.tags"><a href="/#/tags/{{ tag.id }}">{{ tag.tag }}</a></li></ul>
+    </li>
+  </ul>
+</div>
