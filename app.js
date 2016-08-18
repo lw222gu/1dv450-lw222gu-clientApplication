@@ -51,6 +51,11 @@ angular.module('clientApp',[
     controller: 'EditCtrl',
     controllerAs: 'edit'
   })
+  .when('/delete/:id', {
+    templateUrl: 'view/delete.html',
+    controller: 'DeleteCtrl',
+    controllerAs: 'delete'
+  })
   .otherwise({
     redirectTo: '/'
   })

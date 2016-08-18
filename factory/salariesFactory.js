@@ -19,17 +19,20 @@ angular.module('clientApp').factory('SalaryService', ['ResourceService', '$q', f
 
     editSalary: function(id, title, wage, tags, address){
       var deferred = $q.defer();
-
       var salary = {
         'title': title,
         'wage': wage,
         'address': address,
       };
-      console.log(salary);
-
-      console.log(id);
-
       Salary.edit(salary, id, 'salaries').then(function(data){
+        deferred.resolve(data);
+      });
+      return deferred.promise;
+    },
+
+    deleteSalary: function(id){
+      var deferred = $q.defer();
+      Salary.delete(id).then(function(data){
         deferred.resolve(data);
       });
       return deferred.promise;

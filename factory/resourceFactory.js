@@ -16,7 +16,6 @@ angular.module('clientApp').factory('ResourceService', function($http, API){
         }
       };
       return $http(req).then(function(response){
-        console.log(response);
         var result = [];
         angular.forEach(response.data, function(value, key){
           result[key] = new Resource(value);
@@ -56,12 +55,11 @@ angular.module('clientApp').factory('ResourceService', function($http, API){
         }
       };
 
+      // Känns som en riktig fullösning, men lyckas inte lösa det på annat sätt.
       angular.forEach(object, function(value, key){
         var str = key + '=' + value + '&';
         req.url += str;
       });
-
-      
 
       return $http(req).then(function(response){
         var result = [];
@@ -72,7 +70,24 @@ angular.module('clientApp').factory('ResourceService', function($http, API){
       });
     };
 
-
+    Resource.delete = function(id){
+      var req = {
+        method: 'DELETE',
+        url: API.Url + collectionName + '/' + id,
+        headers: {
+          'X-ApiKey': API.ApiKey,
+          'Authorization': sessionStorage['jwt'],
+          'Accept': 'application/json'
+        }
+      };
+      return $http(req).then(function(response){
+        var result = [];
+        angular.forEach(response.data, function(value, key){
+          result[key] = new Resource(value);
+        });
+        return result;
+      });
+    };
 
     return Resource;
   }

@@ -4,7 +4,7 @@
     <li ng-repeat="salary in salaries">
       <a href="/#/salary/{{ salary.id }}">{{ salary.title }}</a>, {{ salary.wage }}
       <ul><li ng-repeat="tag in salary.tags"><a href="/#/tags/{{ tag.id }}">{{ tag.tag }}</a></li></ul>
-      <a href="/#/edit/{{ salary.id }}">Redigera</a>
+      <div class="edit-delete"><a href="/#/edit/{{ salary.id }}">Redigera</a>, <a href="/#/delete/{{ salary.id }}">Radera</a></div>
     </li>
   </ul>
 </div>

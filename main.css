@@ -1,0 +1,9 @@
+.edit-delete {
+  font-size: 12px;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.edit-delete a {
+  color:red;
+}
