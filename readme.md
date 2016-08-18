@@ -11,5 +11,5 @@ API:t finns tillgängligt i [detta repositorie](https://github.com/lw222gu/1dv45
 ## Inloggningsuppgifter
 Logga in i klienten med användarnamn `resourceowner` och lösenord `123456`.
 
-### Förändringar i API:t
-Den förändring jag lagt till i API:t innebär att API:t implementerar `rack-cors`. 
+# Förändringar i API:t
+Den förändring jag lagt till i API:t innebär att API:t implementerar `rack-cors`.
