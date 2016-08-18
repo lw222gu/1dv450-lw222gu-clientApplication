@@ -1,9 +1,10 @@
-<div class="col-12" ng-controller="SearchCtrl">
+<div class="col-12" ng-controller="ProfileCtrl">
   <h2>Min profil</h2>
   <ul>
     <li ng-repeat="salary in salaries">
       <a href="/#/salary/{{ salary.id }}">{{ salary.title }}</a>, {{ salary.wage }}
       <ul><li ng-repeat="tag in salary.tags"><a href="/#/tags/{{ tag.id }}">{{ tag.tag }}</a></li></ul>
+      <a href="/#/edit/{{ salary.id }}">Redigera</a>
     </li>
   </ul>
 </div>

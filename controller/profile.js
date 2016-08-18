@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('clientApp')
-  .controller('ProfileCtrl', ['SalaryService', 'API', '$http', '$scope', function (Salary, API, $http, $scope, $location) {
+  .controller('ProfileCtrl', ['SalaryService', 'API', '$http', '$scope', '$location', function (Salary, API, $http, $scope, $location) {
 
     if(sessionStorage['authenticated'] == undefined || sessionStorage['authenticated'] == 'false')
     {

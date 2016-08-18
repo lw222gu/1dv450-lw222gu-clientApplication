@@ -5,7 +5,7 @@ angular.module('clientApp')
   console.log('salary controller');
 
   var salaryPromise = SalaryService.getSalary($routeParams.id);
-  var salaries = [];
+  //var salaries = [];
 
   salaryPromise
     .then(function(data){

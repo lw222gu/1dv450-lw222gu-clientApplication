@@ -1,45 +1,52 @@
 'use strict';
 
 angular.module('clientApp')
-  .controller('EditCtrl', function ($http, $scope, $rootScope, API, $location) {
+  .controller('EditCtrl', ['TagService', 'SalaryService', 'LocationService', '$scope', '$routeParams', '$http', function(TagService, SalaryService, LocationService, $scope, $routeParams, $http) {
+
     var vm = this;
     console.log('I editcontrollern');
 
-    if(sessionStorage['authenticated'] == 'true')
-    {
-      $scope.loggedIn = true;
-    }
-    else
-    {
-      $scope.loggedIn = false;
-    }
+      $scope.submit = function(){
+        console.log('hej');
+        var editPromise = SalaryService.editSalary($routeParams.id, $scope.edit.title, $scope.edit.wage, null, $scope.edit.address);
+        editPromise
+        .then(function(editData){
+          console.log(editData);
+        })
+        .catch(function(error){
 
-    vm.submit = function(){
-      var url = API.Url + 'salaries';
-
-      var params = {
-        title: $scope.create.title,
-        wage: $scope.create.wage,
-        address: $scope.create.address
+        });
       };
 
-      var config = {
-        headers: {
-          'X-ApiKey': API.ApiKey,
-          'Authorization': sessionStorage['jwt'],
-          'Accept': 'application/json'
-        }
-      };
+      var salaryPromise = SalaryService.getSalary($routeParams.id);
+      salaryPromise
+        .then(function(salaryData){
+          var salary = {
+            title : salaryData['salary'].title,
+            wage : salaryData['salary'].wage,
+            address: null,
+            id: salaryData['salary'].id
+          };
 
-      var promise = $http.post(url, params, config);
+          // get salary location
+          var locationPromise = LocationService.getLocation(salaryData['salary'].location.id);
+          locationPromise
+          .then(function(locationData){
+            salary.address = locationData['location'].address;
+          });
+          $scope.edit = salary;
+        })
+        .catch(function(error){
+          console.log(error);
+        });
 
-      promise.success(function(data, status, headers, config){
-        console.log('sparades')
-        $location.path('/');
-      });
 
-      promise.error(function(data, status, headers, config){
-        console.log(error);
-      });
-    };
-  });
+
+
+
+
+
+  //  editSalary: function(id, title, wage, tags, address)
+
+
+  }]);

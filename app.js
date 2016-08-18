@@ -46,7 +46,7 @@ angular.module('clientApp',[
     controller: 'CreateCtrl',
     controllerAs: 'create'
   })
-  .when('/edit', {
+  .when('/edit/:id', {
     templateUrl: 'view/edit.html',
     controller: 'EditCtrl',
     controllerAs: 'edit'

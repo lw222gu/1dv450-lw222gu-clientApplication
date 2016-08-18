@@ -1,0 +1,24 @@
+<div class="col-12" ng-controller="EditCtrl">
+  <h2>Redigera</h2>
+  <form>
+    <div class="form-group">
+      <label for="title">Titel</label>
+      <input id="title" name="title" ng-model="edit.title" type="text" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="wage">Lön</label>
+      <input id="wage" name="wage" ng-model="edit.wage" type="text" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="address">Adress</label>
+      <input id="address" name="address" ng-model="edit.address" type="text" class="form-control" />
+    </div>
+    <div class="form-group">
+      <input type="submit" ng-click="submit()" id="edit-btn" class="btn" value="Spara" />
+    </div>
+  </form>
+  <h3>Taggar</h3>
+  <ul>
+    <li ng-repeat="tag in edit.tags"><a href="/#/tags/{{ tag.id }}">{{ tag.tag }}</a></li>
+  </ul>
+</div>
