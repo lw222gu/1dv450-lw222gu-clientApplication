@@ -41,6 +41,11 @@ angular.module('clientApp',[
     controller: 'SalaryCtrl',
     controllerAs: 'salary'
   })
+  .when('/create', {
+    templateUrl: 'view/create.html',
+    controller: 'CreateCtrl',
+    controllerAs: 'create'
+  })
   .otherwise({
     redirectTo: '/'
   })
