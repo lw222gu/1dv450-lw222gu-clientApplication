@@ -7,8 +7,7 @@ angular.module('clientApp')
     console.log('I editcontrollern');
 
     $scope.submit = function(){
-      console.log('hej');
-      var editPromise = SalaryService.editSalary($routeParams.id, $scope.edit.title, $scope.edit.wage, null, $scope.edit.address);
+      var editPromise = SalaryService.editSalary($routeParams.id, $scope.edit.title, $scope.edit.wage, $scope.edit.address);
       editPromise
       .then(function(editData){
         console.log(editData);

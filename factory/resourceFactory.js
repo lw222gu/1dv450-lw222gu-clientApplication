@@ -57,8 +57,8 @@ angular.module('clientApp').factory('ResourceService', function($http, API){
 
       // Känns som en riktig fullösning, men lyckas inte lösa det på annat sätt.
       angular.forEach(object, function(value, key){
-        var str = key + '=' + value + '&';
-        req.url += str;
+          var str = key + '=' + value + '&';
+          req.url += str;
       });
 
       return $http(req).then(function(response){

@@ -15,7 +15,16 @@ angular.module('clientApp')
     }
 
     vm.submit = function(){
-      var url = API.Url + 'salaries';
+      var url = API.Url + 'salaries?title=' + $scope.create.title + '&wage=' + $scope.create.wage + '&address=' + $scope.create.address;
+      var tagsStr = $scope.create.tags;
+      var tagsArray = tagsStr.split(', ');
+
+      for(var i = 0; i < tagsArray.length; i++)
+      {
+        var str = '&tags[]=' + tagsArray[i];
+        url += str;
+      }
+
 
       var params = {
         title: $scope.create.title,
