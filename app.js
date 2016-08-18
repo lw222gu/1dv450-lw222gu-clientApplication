@@ -46,6 +46,11 @@ angular.module('clientApp',[
     controller: 'CreateCtrl',
     controllerAs: 'create'
   })
+  .when('/edit', {
+    templateUrl: 'view/edit.html',
+    controller: 'EditCtrl',
+    controllerAs: 'edit'
+  })
   .otherwise({
     redirectTo: '/'
   })

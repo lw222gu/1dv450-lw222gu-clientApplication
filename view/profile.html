@@ -1,0 +1,9 @@
+<div class="col-12" ng-controller="SearchCtrl">
+  <h2>Min profil</h2>
+  <ul>
+    <li ng-repeat="salary in salaries">
+      <a href="/#/salary/{{ salary.id }}">{{ salary.title }}</a>, {{ salary.wage }}
+      <ul><li ng-repeat="tag in salary.tags"><a href="/#/tags/{{ tag.id }}">{{ tag.tag }}</a></li></ul>
+    </li>
+  </ul>
+</div>
