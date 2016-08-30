@@ -44,6 +44,26 @@ angular.module('clientApp').factory('ResourceService', function($http, API){
       });
     };
 
+    Resource.getByResource = function(id, resource)
+    {
+      var req = {
+        method: 'GET',
+        url: API.Url + resource + '/' + id + '/' + collectionName,
+        headers: {
+          'X-ApiKey': API.ApiKey,
+          'Accept': 'application/json'
+        }
+      };
+      console.log(req.url)
+      return $http(req).then(function(response){
+        var result = [];
+        angular.forEach(response.data, function(value, key){
+          result[key] = new Resource(value);
+        });
+        return result;
+      });
+    }
+
     Resource.edit = function(object, id, collection){
       var req = {
         method: 'PUT',

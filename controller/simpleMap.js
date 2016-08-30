@@ -1,13 +1,21 @@
 'use strict';
 
 angular.module('clientApp')
-.controller('SimpleMapCtrl', ['$scope', '$http', 'LocationService', 'SalaryService', function($scope, $http, Location, Salary){
+.controller('SimpleMapCtrl', ['$scope', '$http', 'LocationService', 'SalaryService', '$routeParams', function($scope, $http, Location, Salary, $routeParams){
 
   var markers = {};
   var index = 0;
+  var salaryPromise;
+
 
   // Get all salaries
-  var salaryPromise = Salary.get();
+  if($routeParams.id != undefined)
+  {
+    salaryPromise = Salary.getByTag($routeParams.id);
+  }
+  else {
+    salaryPromise = Salary.get();
+  }
   salaryPromise
     .then(function(data){
 

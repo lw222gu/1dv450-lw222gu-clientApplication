@@ -37,6 +37,14 @@ angular.module('clientApp').factory('SalaryService', ['ResourceService', '$q', f
         deferred.resolve(data);
       });
       return deferred.promise;
+    },
+
+    getByTag: function(id){
+      var deferred = $q.defer();
+      Salary.getByResource(id, 'tags').then(function(data){
+        deferred.resolve(data);
+      });
+      return deferred.promise;
     }
   };
 }]);

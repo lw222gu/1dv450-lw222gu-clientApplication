@@ -6,6 +6,12 @@
     </li>
   </ul>
 
-  <h2 style="font-size: 22px;">Alla kompetenstaggar</h2>
-  <tags ng-controller="TagsCtrl"></tags>
+  <div class="col-12" ng-controller="SimpleMapCtrl">
+    <leaflet lf-center="center" markers="markers" defaults="defaults" height="480px" width="100%"></leaflet>
+  </div>
+
+  <div class="col-12">
+    <h2 style="font-size: 22px;">Alla kompetenstaggar</h2>
+    <tags ng-controller="TagsCtrl"></tags>
+  </div>
 </div>
