@@ -1,23 +1,31 @@
-<div class="col-12" ng-controller="CreateCtrl">
-  <h2>Lägg till ny lön på kartan</h2>
+<div class="row" ng-controller="CreateCtrl">
+  <h2 class="col-sm-12">Lägg till ny lön på kartan</h2>
   <form ng-show="loggedIn">
-    <div class="form-group">
+    <div class="form-group col-sm-12">
       <label for="title">Yrkestitel</label>
       <input required id="title" name="title" ng-model="create.title" type="text" class="form-control" />
     </div>
-    <div class="form-group">
+    <div class="form-group col-sm-12">
       <label for="wage">Lön (anges i siffror)</label>
       <input required id="wage" name="wage" ng-model="create.wage" type="number" class="form-control" />
     </div>
-    <div class="form-group">
+    <!--<div class="form-group">
       <label for="address">Adress</label>
       <input required id="address" name="address" ng-model="create.address" type="text" class="form-control" />
+    </div>-->
+    <div class="form-group col-sm-6">
+      <label for="latitude">Latitud (exempel 61.0)</label>
+      <input required pattern="[0-9]+([\.][0-9]+)?" id="latitude" name="latitude" ng-model="create.latitude" type="text" class="form-control" />
     </div>
-    <div class="form-group">
+    <div class="form-group col-sm-6">
+      <label for="longitude">Longitud (exempel 15.5)</label>
+      <input required pattern="[0-9]+([\.][0-9]+)?" id="longitude" name="longitude" ng-model="create.longitude" type="text" class="form-control" />
+    </div>
+    <div class="form-group col-sm-12">
       <label for="tags">Kompetenstaggar (separera med ,)</label>
       <input id="tags" name="tags" ng-model="create.tags" type="text" class="form-control" />
     </div>
-    <div class="form-group">
+    <div class="form-group col-sm-12">
       <button ng-click="create.submit()" id="create-btn" class="btn">Spara</button>
     </div>
   </form>

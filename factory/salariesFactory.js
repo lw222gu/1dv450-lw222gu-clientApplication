@@ -17,12 +17,13 @@ angular.module('clientApp').factory('SalaryService', ['ResourceService', '$q', f
       return deferred.promise;
     },
 
-    editSalary: function(id, title, wage, address){
+    editSalary: function(id, title, wage, latitude, longitude){
       var deferred = $q.defer();
       var salary = {
         'title': title,
         'wage': wage,
-        'address': address
+        'latitude': latitude,
+        'longitude': longitude
       };
       Salary.edit(salary, id, 'salaries').then(function(data){
         deferred.resolve(data);

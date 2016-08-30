@@ -1,22 +1,28 @@
-<div class="col-12" ng-controller="EditCtrl">
-  <h2>Redigera</h2>
+<div class="row" ng-controller="EditCtrl">
+  <h2 class="col-sm-12">Redigera</h2>
   <form>
-    <div class="form-group">
+    <div class="form-group col-sm-12">
       <label for="title">Yrkestitel</label>
       <input required id="title" name="title" ng-model="edit.title" type="text" class="form-control" />
     </div>
-    <div class="form-group">
+    <div class="form-group col-sm-12">
       <label for="wage">Lön</label>
       <input required id="wage" name="wage" ng-model="edit.wage" type="text" class="form-control" />
     </div>
-    <div class="form-group">
-      <label for="address">Adress</label>
-      <input required id="address" name="address" ng-model="edit.address" type="text" class="form-control" />
+    <div class="form-group col-sm-6">
+      <label for="latitude">Latitud (exempel 61.0)</label>
+      <input required pattern="^[0-9]+([\.][0-9]+)?" id="latitude" name="latitude" ng-model="edit.latitude" type="text" class="form-control" />
     </div>
-    <div class="form-group">
+    <div class="form-group col-sm-6">
+      <label for="longitude">Longitud (exempel 15.5)</label>
+      <input required pattern="[0-9]+([\.][0-9]+)?" id="longitude" name="longitude" ng-model="edit.longitude" type="text" class="form-control" />
+    </div>
+    <p class="col-sm-6">{{ edit.address }}</p>
+
+    <div class="form-group col-sm-12">
       <input type="submit" ng-click="submit()" id="edit-btn" class="btn" value="Spara" />
     </div>
   </form>
-  <div ng-show="error" class="alert alert-danger">{{ message }}</div>
-  <div ng-show="success" class="alert alert-success">{{ message }}</div>
+  <div ng-show="error" class="col-sm-12 alert alert-danger">{{ message }}</div>
+  <div ng-show="success" class="col-sm-12 alert alert-success">{{ message }}</div>
 </div>

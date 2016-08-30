@@ -1,8 +1,11 @@
 <div class="col-12" ng-controller="TagCtrl">
-  <h2>{{ tag.tag }}</h2>
+  <h1>Registrerade löner med taggen "{{ tag.tag }}"</h1>
   <ul>
     <li ng-repeat="salary in salaries">
       <a href="/#/salary/{{ salary.id }}">{{ salary.title }}</a>, {{ salary.wage }}, {{ salary.address }}
     </li>
   </ul>
+
+  <h2 style="font-size: 22px;">Alla kompetenstaggar</h2>
+  <tags ng-controller="TagsCtrl"></tags>
 </div>

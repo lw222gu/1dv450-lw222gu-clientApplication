@@ -17,8 +17,8 @@ angular.module('clientApp')
 
       $scope.error = false;
 
-      if($scope.create.title != null && $scope.create.wage != null && $scope.create.address != null){
-        var url = API.Url + 'salaries?title=' + $scope.create.title + '&wage=' + $scope.create.wage + '&address=' + $scope.create.address;
+      if($scope.create.title != null && $scope.create.wage != null && $scope.create.latitude != null && $scope.create.longitude != null){
+        var url = API.Url + 'salaries?title=' + $scope.create.title + '&wage=' + $scope.create.wage + '&latitude=' + $scope.create.latitude + '&longitude=' + $scope.create.longitude;
         var tagsStr = $scope.create.tags;
 
         if(tagsStr != null && tagsStr != undefined && tagsStr != ""){
@@ -33,7 +33,8 @@ angular.module('clientApp')
         var params = {
           title: $scope.create.title,
           wage: $scope.create.wage,
-          address: $scope.create.address
+          latitude: $scope.create.latitude,
+          longitude: $scope.create.longitude
         };
 
         var config = {

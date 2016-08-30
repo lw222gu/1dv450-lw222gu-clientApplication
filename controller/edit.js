@@ -9,8 +9,8 @@ angular.module('clientApp')
       $scope.error = false;
       $scope.success = false;
 
-      if($scope.edit.title != null && $scope.edit.wage != null && $scope.edit.address != null){
-        var editPromise = SalaryService.editSalary($routeParams.id, $scope.edit.title, $scope.edit.wage, $scope.edit.address);
+      if($scope.edit.title != null && $scope.edit.wage != null && $scope.edit.latitude != null && $scope.edit.longitude != null){
+        var editPromise = SalaryService.editSalary($routeParams.id, $scope.edit.title, $scope.edit.wage, $scope.edit.latitude, $scope.edit.longitude);
         editPromise
         .then(function(editData){
           $scope.success = true;
@@ -42,6 +42,8 @@ angular.module('clientApp')
         locationPromise
         .then(function(locationData){
           salary.address = locationData['location'].address;
+          salary.latitude = locationData['location'].latitude;
+          salary.longitude = locationData['location'].longitude;
         });
         $scope.edit = salary;
       })
