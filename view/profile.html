@@ -7,4 +7,6 @@
       <div class="edit-delete"><a href="/#/edit/{{ salary.id }}">Redigera</a>, <a href="/#/delete/{{ salary.id }}">Radera</a></div>
     </li>
   </ul>
+
+  <div ng-show="error" class="col-sm-12 alert alert-danger">{{ message }}</div>
 </div>

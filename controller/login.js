@@ -1,14 +1,10 @@
 'use strict';
 
 angular.module('clientApp')
-  .controller('LoginCtrl', function ($http, $scope, $rootScope, API, $location, Authenticated) {
+  .controller('LoginCtrl', function ($http, $scope, API, $location, Authenticated) {
     var vm = this;
-    console.log('I logincontrollern');
 
     vm.submit = function(){
-
-      // TODO: if username and password is provided
-
       var url = API.Url + 'auth';
 
       var params = {

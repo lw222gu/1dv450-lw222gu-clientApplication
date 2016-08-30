@@ -5,4 +5,5 @@
   <ul>
     <li ng-repeat="tag in salary.tags"><a href="/#/tags/{{ tag.id }}">{{ tag.tag }}</a></li>
   </ul>
+  <div ng-show="error" class="col-sm-12 alert alert-danger">{{ message }}</div>
 </div>

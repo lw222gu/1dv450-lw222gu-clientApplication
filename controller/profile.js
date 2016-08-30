@@ -18,14 +18,15 @@ angular.module('clientApp')
     };
 
     var promise = $http.get(url, config);
+    $scope.error = false;
 
     promise.success(function(data, status, headers, config){
-      console.log(data.salaries);
       $scope.salaries = data.salaries;
     });
 
     promise.error(function(data, status, headers, config){
-      console.log("error");
+      $scope.error = true;
+      $scope.message = "Något gick fel när de registrerade lönerna skulle hämtas.";
     });
 
   }]);

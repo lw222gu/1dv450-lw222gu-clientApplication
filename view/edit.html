@@ -20,6 +20,11 @@
     <p class="col-sm-6">{{ edit.address }}</p>
 
     <div class="form-group col-sm-12">
+      <label for="tags">Kompetenstaggar</label>
+      <input required id="tags" name="tags" ng-model="edit.tags" type="text" class="form-control" />
+    </div>
+
+    <div class="form-group col-sm-12">
       <input type="submit" ng-click="submit()" id="edit-btn" class="btn" value="Spara" />
     </div>
   </form>

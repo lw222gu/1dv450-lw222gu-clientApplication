@@ -13,6 +13,7 @@ angular.module('clientApp')
       $scope.loggedIn = false;
     }
 
+      // POST. Not using factories since that will mess up the factories due to tags handling.
     vm.submit = function(){
 
       $scope.error = false;
@@ -48,7 +49,6 @@ angular.module('clientApp')
         var promise = $http.post(url, params, config);
 
         promise.success(function(data, status, headers, config){
-          console.log('sparades');
           $scope.error = false;
           $location.path('/');
         });

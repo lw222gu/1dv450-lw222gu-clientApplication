@@ -5,20 +5,15 @@ angular.module('clientApp')
   console.log('salary controller');
 
   var salaryPromise = SalaryService.getSalary($routeParams.id);
-  //var salaries = [];
+  $scope.error = false;
 
   salaryPromise
     .then(function(data){
-      console.log(data['salary']);
       $scope.salary = data['salary'];
-
-      //foreach tagged salary... get salary.
-      angular.forEach(data['salary'].tags, function(value, key){
-
-      });
     })
     .catch(function(error){
-      console.log(error);
+      $scope.error = true;
+      $scope.message = "Något gick fel när den registrerade lönen skulle hämtas.";
     });
 
 }]);

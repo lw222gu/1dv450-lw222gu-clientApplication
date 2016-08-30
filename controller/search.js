@@ -3,7 +3,6 @@
 angular.module('clientApp')
   .controller('SearchCtrl', function ($http, $scope, $rootScope, API, $location, Authenticated) {
     var vm = this;
-    console.log('I searchcontrollern');
 
     vm.submit = function(){
 
@@ -35,7 +34,8 @@ angular.module('clientApp')
       });
 
       promise.error(function(data, status, headers, config){
-        console.log(data);
+        $scope.error = true;
+        $scope.errorMessage = "Ett oväntat fel inträffade. Prova igen.";
       });
     };
   });

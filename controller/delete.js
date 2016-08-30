@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('clientApp')
-  .controller('DeleteCtrl', ['TagService', 'SalaryService', 'LocationService', '$scope', '$routeParams', '$http', function(TagService, SalaryService, LocationService, $scope, $routeParams, $http) {
+  .controller('DeleteCtrl', [ 'SalaryService', '$scope', '$routeParams', function(SalaryService, $scope, $routeParams) {
 
     var vm = this;
 
