@@ -4,17 +4,27 @@ angular.module('clientApp')
   .controller('EditCtrl', ['TagService', 'SalaryService', 'LocationService', '$scope', '$routeParams', '$http', function(TagService, SalaryService, LocationService, $scope, $routeParams, $http) {
 
     var vm = this;
-    console.log('I editcontrollern');
 
     $scope.submit = function(){
-      var editPromise = SalaryService.editSalary($routeParams.id, $scope.edit.title, $scope.edit.wage, $scope.edit.address);
-      editPromise
-      .then(function(editData){
-        console.log(editData);
-      })
-      .catch(function(error){
+      $scope.error = false;
+      $scope.success = false;
 
-      });
+      if($scope.edit.title != null && $scope.edit.wage != null && $scope.edit.address != null){
+        var editPromise = SalaryService.editSalary($routeParams.id, $scope.edit.title, $scope.edit.wage, $scope.edit.address);
+        editPromise
+        .then(function(editData){
+          $scope.success = true;
+          $scope.message = "Posten sparades.";
+        })
+        .catch(function(error){
+          $scope.error = true;
+          $scope.message = "Ett fel inträffade när posten skulle sparas.";
+        });
+      }
+      else {
+        $scope.error = true;
+        $scope.message = "Du måste fylla i samtliga fält.";
+      }
     };
 
     var salaryPromise = SalaryService.getSalary($routeParams.id);
@@ -36,6 +46,7 @@ angular.module('clientApp')
         $scope.edit = salary;
       })
       .catch(function(error){
-        console.log(error);
+        $scope.error = true;
+        $scope.message = "Något gick fel när posten skulle hämtas. Prova igen.";
       });
   }]);

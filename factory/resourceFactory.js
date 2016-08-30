@@ -39,6 +39,8 @@ angular.module('clientApp').factory('ResourceService', function($http, API){
         var result = [];
         angular.forEach(response.data, function(value, key){
           result[key] = new Resource(value);
+          console.log(value);
+          console.log(key);
         });
         return result;
       });

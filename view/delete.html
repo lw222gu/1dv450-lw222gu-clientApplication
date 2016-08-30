@@ -2,7 +2,7 @@
   <h2>Radera</h2>
 <div>
 <div>
-  <form ng-show="!deleted">
+  <form ng-if="!success">
     <div class="form-group">
       <p>Vill du radera posten?</p>
     </div>
@@ -10,4 +10,6 @@
       <button ng-click="submit()" id="delete" class="btn">Radera</button>
     </div>
   </form>
+  <div ng-show="error" class="alert alert-danger">{{ message }}</div>
+  <div ng-show="success" class="alert alert-success">{{ message }}</div>
 </div>
