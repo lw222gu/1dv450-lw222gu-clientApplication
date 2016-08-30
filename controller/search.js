@@ -22,8 +22,16 @@ angular.module('clientApp')
       var promise = $http.get(url, config);
 
       promise.success(function(data, status, headers, config){
-        console.log(data['salaries'])
-        $scope.result = data['salaries'];
+        console.log(data['salaries']);
+        if(data['salaries'].length !== 0)
+        {
+          $scope.result = data['salaries'];
+          $scope.error = false;
+        }
+        else {
+          $scope.error = true;
+          $scope.errorMessage = "Inga löner som matchade din sökning hittades.";
+        }
       });
 
       promise.error(function(data, status, headers, config){

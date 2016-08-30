@@ -3,7 +3,7 @@
   <form>
     <div class="form-group">
       <label for="search">Sök på titel eller tagg</label>
-      <input id="search" name="search" ng-model="search.search" type="text" class="form-control" />
+      <input required id="search" name="search" ng-model="search.search" type="text" class="form-control" />
     </div>
     <div class="form-group">
       <button ng-click="search.submit()" id="search-btn" class="btn">Sök</button>
@@ -15,4 +15,5 @@
       <ul><li ng-repeat="tag in salary.tags"><a href="/#/tags/{{ tag.id }}">{{ tag.tag }}</a></li></ul>
     </li>
   </ul>
+  <div ng-show="error" class="alert alert-danger">{{ errorMessage }}</div>
 </div>

@@ -26,6 +26,7 @@ angular.module('clientApp')
       var promise = $http.post(url, params, config);
 
       promise.success(function(data, status, headers, config){
+        $scope.error = false;
         sessionStorage['authenticated'] = true;
         sessionStorage['jwt'] = data.token;
         sessionStorage['userId'] = data.user_id;
@@ -33,7 +34,8 @@ angular.module('clientApp')
       });
 
       promise.error(function(data, status, headers, config){
-        console.log("fel inloggningsuppgifter");
+        $scope.error = true;
+        $scope.errorMessage = "Du har angivit felaktiga inloggningsuppgifter. Prova igen."
         sessionStorage.setItem('userId', null);
         sessionStorage.setItem('jwt', null);
       });
