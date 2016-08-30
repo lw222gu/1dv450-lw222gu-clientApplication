@@ -1,5 +1,5 @@
 <div class="col-lg-2 col-md-4 col-sm-12" ng-controller="TagsCtrl">
-  <h2>Taggar</h2>
+  <p><strong>Kompetenstaggar</strong></p>
   <ul>
     <li ng-repeat="tag in tagslist">
       <a href="/#/tags/{{ tag.id }}">{{ tag.tag }}</a>
@@ -10,6 +10,3 @@
 <div class="col-lg-10 col-md-8 col-sm-12" ng-controller="SimpleMapCtrl">
   <leaflet lf-center="center" markers="markers" defaults="defaults" height="480px" width="100%"></leaflet>
 </div>
-
-<div ng-show="success" class="alert alert-danger">{{ errorMessage }}</div>
-<div ng-show="error" class="alert alert-success">{{ successMessage }}</div>
