@@ -3,7 +3,6 @@
 angular.module('clientApp')
   .controller('CreateCtrl', function ($http, $scope, $rootScope, API, $location) {
     var vm = this;
-    console.log('I createcontrollern');
 
     if(sessionStorage['authenticated'] == 'true')
     {
@@ -15,39 +14,52 @@ angular.module('clientApp')
     }
 
     vm.submit = function(){
-      var url = API.Url + 'salaries?title=' + $scope.create.title + '&wage=' + $scope.create.wage + '&address=' + $scope.create.address;
-      var tagsStr = $scope.create.tags;
-      var tagsArray = tagsStr.split(', ');
 
-      for(var i = 0; i < tagsArray.length; i++)
-      {
-        var str = '&tags[]=' + tagsArray[i].toLowerCase();
-        url += str;
-      }
+      $scope.error = false;
 
-      var params = {
-        title: $scope.create.title,
-        wage: $scope.create.wage,
-        address: $scope.create.address
-      };
+      if($scope.create.title != null && $scope.create.wage != null && $scope.create.address != null){
+        var url = API.Url + 'salaries?title=' + $scope.create.title + '&wage=' + $scope.create.wage + '&address=' + $scope.create.address;
+        var tagsStr = $scope.create.tags;
 
-      var config = {
-        headers: {
-          'X-ApiKey': API.ApiKey,
-          'Authorization': sessionStorage['jwt'],
-          'Accept': 'application/json'
+        if(tagsStr != null && tagsStr != undefined && tagsStr != ""){
+          var tagsArray = tagsStr.split(', ');
+          for(var i = 0; i < tagsArray.length; i++)
+          {
+            var str = '&tags[]=' + tagsArray[i].toLowerCase();
+            url += str;
+          }
         }
-      };
 
-      var promise = $http.post(url, params, config);
+        var params = {
+          title: $scope.create.title,
+          wage: $scope.create.wage,
+          address: $scope.create.address
+        };
 
-      promise.success(function(data, status, headers, config){
-        console.log('sparades')
-        $location.path('/');
-      });
+        var config = {
+          headers: {
+            'X-ApiKey': API.ApiKey,
+            'Authorization': sessionStorage['jwt'],
+            'Accept': 'application/json'
+          }
+        };
 
-      promise.error(function(data, status, headers, config){
-        console.log(error);
-      });
+        var promise = $http.post(url, params, config);
+
+        promise.success(function(data, status, headers, config){
+          console.log('sparades');
+          $scope.error = false;
+          $location.path('/');
+        });
+
+        promise.error(function(data, status, headers, config){
+          $scope.error = true;
+          $scope.message = "Något gick fel när posten skulle sparas.";
+        });
+      }
+      else {
+        $scope.error = true;
+        $scope.message = "Du har inte angett samtliga obligatoriska fält.";
+      }
     };
   });
