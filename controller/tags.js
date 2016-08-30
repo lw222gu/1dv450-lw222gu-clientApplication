@@ -8,7 +8,15 @@ angular.module('clientApp')
   var tagPromise = TagService.get();
   tagPromise
     .then(function(data){
-      $scope.tagslist = data['tags'];
+      var tags = {};
+
+      angular.forEach(data['tags'], function(value, key){
+        if(value.salaries.length > 0)
+        {
+          tags[key] = value;
+        }
+      });
+      $scope.tagslist = tags;
     })
     .catch(function(error){
       console.log(error);
