@@ -21,10 +21,9 @@ angular.module('clientApp')
 
       for(var i = 0; i < tagsArray.length; i++)
       {
-        var str = '&tags[]=' + tagsArray[i];
+        var str = '&tags[]=' + tagsArray[i].toLowerCase();
         url += str;
       }
-
 
       var params = {
         title: $scope.create.title,
